@@ -16,11 +16,13 @@ class OfficePlugin(CMSPluginBase):
                 ids = instance.ids.split(',')
                 ids = [i.strip() for i in ids] 
                 offices = offices.filter(id__in=ids)
+                if offices:
+                    office = offices[:1].get() 
             context.update({
                     'offices': offices,
                     'placeholder': placeholder,
                     'object': instance,
-                    'office': offices[:1].get(),
+                    'office': office,
             })
             return context
                 
