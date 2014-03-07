@@ -28,8 +28,8 @@ class Office(models.Model):
     head = models.CharField(max_length=255)
     address = models.TextField()
     post_index = models.CharField(max_length=10)
-    latitude = models.DecimalField(max_digits=8, decimal_places=6, null=True, blank=True)
-    longitude = models.DecimalField(max_digits=8, decimal_places=6, null=True, blank=True)
+    latitude = models.DecimalField(max_digits=10, decimal_places=6, null=True, blank=True)
+    longitude = models.DecimalField(max_digits=10, decimal_places=6, null=True, blank=True)
     seo_title = models.CharField(max_length=255, default=u'Transportation logistics in')        
     @property
     def prime_phone(self):
