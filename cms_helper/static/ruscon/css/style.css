@@ -1102,3 +1102,11 @@ a.current_item, a.current_branch {
 .mailto a:hover {	
 	border-bottom: 1px solid white;
 }
+
+.prom_sm p.contacts {
+	font-size: 16px;	
+}
+
+.prom_sm label {
+	color: rgb(245, 255, 203);
+}

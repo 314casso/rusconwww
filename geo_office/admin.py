@@ -1,6 +1,6 @@
 from django.contrib import admin
 from geo_office.models import OfficeContact, Office, Country, Town, OfficeType,\
-    ContactType
+    ContactType, ContactLabel
 from modeltranslation.admin import TranslationAdmin
 
 class ModelTranslationMedia(object):    
@@ -29,3 +29,4 @@ admin.site.register(Country,TransAdmin)
 admin.site.register(Town,TransAdmin)
 admin.site.register(OfficeType,TransAdmin)
 admin.site.register(ContactType,TransAdmin)
+admin.site.register(ContactLabel,TransAdmin)

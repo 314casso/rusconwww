@@ -2,6 +2,7 @@ from django.db import models
 from filer.fields.image import FilerImageField
 from orderedmodel.models import OrderedModel
 from cms.models.pluginmodel import CMSPlugin
+import base64
 
 class Country(models.Model):
     name = models.CharField(max_length=255)
@@ -33,17 +34,21 @@ class Office(models.Model):
     seo_title = models.CharField(max_length=255, default=u'Transportation logistics in')        
     @property
     def prime_phone(self):
-        return self.get_prime_contact(ContactType.PHONE)       
+        return self.get_prime_contact(ContactType.PHONE,1)       
         
     @property
     def prime_email(self):
-        return self.get_prime_contact(ContactType.EMAIL)
+        return self.get_prime_contact(ContactType.EMAIL,1)
+    
+    @property
+    def second_email(self):
+        return self.get_prime_contact(ContactType.EMAIL,2)    
         
-    def get_prime_contact(self, contact_type_id):
-        contacts = self.contacts.filter(contact_type_id=contact_type_id)
-        contact = contacts[:1]
-        if contact:
-            return contacts[:1].get()
+    def get_prime_contact(self, contact_type_id, num):
+        index = num - 1
+        contacts = list(self.contacts.filter(contact_type_id=contact_type_id))
+        if len(contacts) > index:
+            return contacts[index]
             
     @property
     def prime_contacts(self):
@@ -68,12 +73,20 @@ class ContactType(models.Model):
     def __unicode__(self):
         return self.contact_short_type    
 
+class ContactLabel(models.Model):
+    label =  models.CharField(max_length=200)
+    def __unicode__(self):
+        return self.label
+
 class OfficeContact(OrderedModel):
     office = models.ForeignKey(Office, related_name='contacts')
     contact_type = models.ForeignKey(ContactType)
-    contact = models.CharField(max_length=100)
+    contact_label = models.ForeignKey(ContactLabel, null=True, blank=True)
+    contact = models.CharField(max_length=100)    
     def __unicode__(self):
         return '%s: %s' % (self.contact_type.contact_short_type, self.contact)
+    def contact_base64(self):
+        return base64.b64encode(self.contact)
 
 PLUGIN_TEMPLATES = (
   ('geo_office/list.html', 'List'),

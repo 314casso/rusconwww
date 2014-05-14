@@ -1,12 +1,31 @@
- {% load i18n %}
-<p>{{office.seo_title }} <span title="{{ office.town.country }}">{{ office.town }}</span></p>
-<p>
-{% if office.prime_phone %}	
-{{ office.prime_phone }}
+{% load i18n %}
+<p><label>{{office.seo_title }}</label> <span title="{{ office.town.country }}">{{ office.town }}</span></p>
+<p class="contacts">
+{% if office.prime_phone %}
+<label>
+{{ office.prime_phone.contact_type.contact_short_type }}: 
+</label>	
+{{ office.prime_phone.contact }}
 {% endif %}
 <br>
 {% if office.prime_email %}	
-<span class="mailto"><a href="mailto:{{ office.prime_email.contact }}">{{ office.prime_email.contact }}</a></span>
+<label>{{ office.prime_email.contact_label }}:</label> <span class="mailto" data-email="{{ office.prime_email.contact_base64 }}"></span>
+{% endif %}
+<br>
+{% if office.second_email %}	
+<label>{{ office.second_email.contact_label }}:</label> <span class="mailto" data-email="{{ office.second_email.contact_base64 }}"></span>
 {% endif %}
 </p>
 
+
+
+<script>
+	jQuery( document ).ready(function( $ ) {		
+	  $(".mailto").each(function(index) {	  	
+	  	var el = $(this); 	  	
+	  	var email = window.atob(el.data('email'));
+	  	var result = '<a href="mailto:' + email + '">' + email +  '</a>'; 
+	  	el.html(result);	
+	  });	  
+	});
+</script>
