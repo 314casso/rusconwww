@@ -16,6 +16,9 @@
 
       var title = "{{ office.office_title }}";
       var address = "{{ office.address }}, {{ office.post_index }} {{ office.town }}";
+      
+      var prime_email = "{{ office.prime_email.contact_base64 }}";
+      var second_email = "{{ office.second_email.contact_base64 }}";
 
       var options = {
         zoom: 13,
@@ -54,7 +57,14 @@
           content: "<strong>" + title + "</strong> \
                     <br />" + address + 
                     "<br /> {{ office.head_title|safe }} " +                     
-                    "<br /> {{ office.contacts|to_comma_sep|safe }}"  
+                    "<br /> {{ office.contacts|to_comma_sep|safe }}" 
+                    +
+                    '<br /><strong>{{ office.prime_email.contact_label }}: </strong>'  + email_template(prime_email)
+                    + 
+                    {% if office.second_email %} 
+                    '<br /><strong>{{ office.prime_email.contact_label }}: </strong>'  + email_template(second_email)
+                    {% endif %}
+                     
                     
         });
         // show info window        
@@ -62,7 +72,7 @@
   			infowindow.open(map,marker);
 		});
 		infowindow.open(map,marker);		
-      }
+      }            
     }
     google.maps.event.addDomListener(window, 'load', initialize_map);            
   </script>

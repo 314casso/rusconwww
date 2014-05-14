@@ -14,3 +14,18 @@ $(document).ready(function() {
 	});
 
 });
+
+function email_template(email) {
+	email = window.atob(email);
+	return '<a href="mailto:' + email + '">' + email +  '</a>';
+}
+
+
+jQuery( document ).ready(function( $ ) {		
+  	$(".mailto").each(function(index) {	  	
+  	var el = $(this); 	  	
+  	var email = el.data('email');
+  	var result = email_template(email); 
+  	el.html(result);
+  });
+});
