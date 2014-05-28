@@ -1115,3 +1115,7 @@ a.current_item, a.current_branch {
 	font-weight: bold;
 	color: #55688d;
 }
+
+#menu-item-25 a:hover{	
+	color: white;
+}
