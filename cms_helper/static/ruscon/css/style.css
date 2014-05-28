@@ -1117,6 +1117,6 @@ a.current_item, a.current_branch {
 	/*background: rgb(234, 243, 255);*/
 }
 
-#menu-item-25 a:hover{	
+#menu-item-25 a:hover, #menu-item-25 a.current_branch{	
 	color: white;
 }
