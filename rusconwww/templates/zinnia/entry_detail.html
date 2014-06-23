@@ -1,6 +1,7 @@
 {% extends "zinnia/base.html" %}
 {% load sitetree %} 
-{% block content %}      
+{% block content %}    
+{% load page_tags %}  
 
 <div class="small_column">
 {% load page_tags %}
@@ -9,7 +10,7 @@
 
 <div class="big_column">        
 {% block entry-content %}
-  {% include object.content_template with object_content=object.html_content|safe %}
+  {% include object.content_template with object_content=object.html_content|email|safe %}
 {% endblock %}
 </div>
 {% endblock %}

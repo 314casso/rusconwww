@@ -6,6 +6,8 @@ from cms.models.pagemodel import Page
 from sitetree.models import TreeItem
 from django.template import loader
 from django.template.context import Context
+import re
+import base64
 
 register = template.Library()
 
@@ -57,3 +59,12 @@ def human_lang(lang):
     mapper = {'en': u'English', 'ru': u'По-русски'}
     return mapper[lang]
 
+@register.filter()
+def email(content):
+    template = '<span class="mailto" data-email="%s"></span>'
+    matches = re.findall(r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}', content)
+    for m in matches:
+        content = content.replace(m, template % base64.b64encode(m))
+        print m  
+    #re.sub(r'', repl, string, count, flags) (r'', content)
+    return content 
