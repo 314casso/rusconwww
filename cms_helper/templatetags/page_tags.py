@@ -23,7 +23,7 @@ def get_page_reverce_id(value):
     try:    
         return mapper[value]
     except KeyError:
-        return None
+        return 'company'
     
 @register.filter()
 def get_page_reverce_id_form_entry(value):
