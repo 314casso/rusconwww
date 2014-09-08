@@ -1,0 +1,24 @@
+{% extends "zinnia/category/entry_list.html" %}
+{% load cms_tags %}
+
+{% block content-loop %}
+<div class="spacer"></div>
+{% for object in object_list %}
+
+<div class="entry-header">
+	<h2 class="entry-title"> {{ object.title|widont }} </h2>
+</div>
+
+{% block entry-body %}
+<div class="entry-body">
+	{% block entry-content %}
+	<div class="entry-content">
+		{{ object_content|safe }}
+	</div>
+	{% endblock entry-content %}
+</div>
+{% endblock entry-body %}
+
+{% endfor %}
+
+{% endblock %}
