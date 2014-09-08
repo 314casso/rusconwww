@@ -11,14 +11,14 @@
 
 {% block entry-body %}
 <div class="entry-body">
-	{% block entry-content %}
+
 	<div class="entry-content">
 		{{ object_content|safe }}
 	</div>
-	{% endblock entry-content %}
+
 </div>
 {% endblock entry-body %}
 
 {% endfor %}
 
-{% endblock %}
+{% endblock content-loop %}
