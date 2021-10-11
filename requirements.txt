@@ -5,7 +5,7 @@ cmsplugin-contact==1.0.0
 cmsplugin-filer==0.9.4
 cmsplugin-zinnia==0.4
 command-not-found==0.2.44
-Django==1.4.5
+Django==2.2.24
 django-blog-zinnia==0.12.2
 django-classy-tags==0.4
 django-cms==2.3.5
