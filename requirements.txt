@@ -24,7 +24,7 @@ et-xmlfile==1.0.1
 GnuPGInterface==0.3.2
 google-api-python-client==1.6.2
 html5lib==0.95
-httplib2==0.10.3
+httplib2==0.19.0
 jdcal==1.4.1
 keyring==0.9.2
 Landscape-Client==12.5
