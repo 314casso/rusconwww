@@ -65,7 +65,7 @@ simplejson==2.3.2
 six==1.10.0
 South==1.0.2
 suds==0.4
-supervisor==3.0a8
+supervisor==3.0.1
 Twisted-Core==11.1.0
 ufw==0.31.1.post1
 unattended-upgrades==0.1
