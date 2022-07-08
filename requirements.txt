@@ -64,7 +64,7 @@ rsa==3.4.2
 simplejson==2.3.2
 six==1.10.0
 South==1.0.2
-suds==0.4
+suds==1.0.0
 supervisor==3.0a8
 Twisted-Core==11.1.0
 ufw==0.31.1.post1
